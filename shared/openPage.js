@@ -20,6 +20,9 @@ export default async function(options) {
     height: device.viewport.height
   });
 
+  // Page load event.
+  page.on('load', () => console.log(`Page loaded ${page.url()}`));
+
   // Open page.
   await page.goto(options.url);
 
