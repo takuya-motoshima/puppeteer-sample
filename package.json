@@ -1,0 +1,30 @@
+{
+  "name": "puppeteer-sample",
+  "version": "1.0.0",
+  "description": "This is a sample that runs puppeteer's headless browser on Linux OS.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/takuya-motoshima/puppeteer-sample.git"
+  },
+  "keywords": [
+    "node",
+    "headless",
+    "puppeteer",
+    "scraping"
+  ],
+  "author": "Takuya Motoshima <developer.takuyamotoshima@gmail.com> (https://twitter.com/TakuyaMotoshima)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/takuya-motoshima/puppeteer-sample/issues",
+    "email": "developer.takuyamotoshima@gmail.com"
+  },
+  "homepage": "https://github.com/takuya-motoshima/puppeteer-sample#readme",
+  "dependencies": {
+    "moment": "^2.29.1",
+    "puppeteer": "^8.0.0"
+  }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <title>Puppeteer test page</title>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="mb-3">Puppeteer test page</h1>
+
+    <h3>Headless browser information</h3>
+
+    <table class="table">
+      <tr>
+        <th>browser</th>
+        <td id="browser"></td>
+      </tr>
+        <th>engine</th>
+        <td id="engine"></td>
+      </tr>
+      </tr>
+        <th>os</th>
+        <td id="os"></td>
+      </tr>
+      </tr>
+        <th>platform</th>
+        <td id="platform"></td>
+      </tr>
+    </table>
+
+
+    <h3>Manipulate the contents of the shadow DOM</h3>
+
+    <button type="button" class="btn btn-primary">Open the shadow DOM content.</button>
+  </div>
+
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="node_modules/bowser/bundled.js"></script>
+  <script>
+
+    // Display browser information.
+    const info = bowser.parse(navigator.userAgent);
+    console.log(info);
+    $('#browser').text(`${info.browser.name} ${info.browser.version}`);
+    $('#engine').text(`${info.engine.name}`);
+    $('#os').text(`${info.os.name} ${info.os.version}`);
+    $('#platform').text(`${info.platform.type}`);
+  </script>
+</body>
+</html>
