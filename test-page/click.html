@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <title>Puppeteer test page</title>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="mb-3">Puppeteer test page</h1>
+    <button id="btn" type="button" class="btn btn-primary">Click me</button>
+    <h3 class="mt-4"></h3>
+  </div>
+
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script>
+    $('#btn').on('click', () => {
+      $('h3').text('Thank you for clicking');
+    });
+  </script>
+</body>
+</html>

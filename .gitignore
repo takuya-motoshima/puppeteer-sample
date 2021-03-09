@@ -1,3 +1,5 @@
 node_modules/
 screenshot/*
 !screenshot
+run-pic.js
+test-page/pic.html

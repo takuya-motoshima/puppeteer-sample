@@ -32,10 +32,24 @@ Install the font so that it will not be garbled when you take a screenshot with 
 sudo yum -y install ipa-gothic-fonts;
 ```
 
-Run the sample program.  
-The sample outputs a screenshot of the Google search page to the "screenshot/" directory.  
+Install a third party for this package.  
 
 ```sh
 npm install;
-node main.js https://www.google.com/;
+```
+
+Run the sample program.  
+
+This is a sample that simply takes a screenshot.  
+You can check the browser information.  
+After execution, the screenshot will be added to "screenshot/".  
+
+```sh
+node --experimental-modules run-basic.js https://<Your hostYour host name>/test-page/basic.htmll;
+```
+
+This is a sample of clicking a button on the test page.  
+
+```sh
+node --experimental-modules run-click.js https://<Your hostYour host name>/test-page/click.html;
 ```

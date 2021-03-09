@@ -1,0 +1,40 @@
+.main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+.main:not(.show) {
+  display: none !important;
+}
+
+  .btn-close {
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    right: 10px;
+  }
+
+  .btn-shutter {
+    position: absolute;
+    z-index: 2;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .video {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    widows: 100%;
+    height: 100%;
+    transform: scale(-1, 1);
+  }

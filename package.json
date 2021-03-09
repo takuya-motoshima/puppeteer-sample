@@ -2,6 +2,7 @@
   "name": "puppeteer-sample",
   "version": "1.0.0",
   "description": "This is a sample that runs puppeteer's headless browser on Linux OS.",
+  "type": "module",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/takuya-motoshima/puppeteer-sample#readme",
   "dependencies": {
+    "glob": "^7.1.6",
     "moment": "^2.29.1",
     "puppeteer": "^8.0.0"
   }
