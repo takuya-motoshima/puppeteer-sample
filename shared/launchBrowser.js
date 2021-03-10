@@ -10,8 +10,11 @@ export default async function() {
       '--no-sandbox',
       '--disable-gpu',
 
-      // Skip the webcam permission prompt.
-      '--use-fake-ui-for-media-stream'
+      // Suppress the Permission Dialog.
+      '--use-fake-ui-for-media-stream',
+
+        // Simulate Capture with a Fake Stream (test video and audio signal).
+        '--use-fake-device-for-media-stream',
     ],
     // Ignore HTTP errors such as ssl certificates.
     ignoreHTTPSErrors: false,
