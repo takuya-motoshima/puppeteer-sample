@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/takuya-motoshima/puppeteer-sample#readme",
   "dependencies": {
+    "@slack/web-api": "^6.1.0",
     "globby": "^11.0.2",
     "join-images": "^0.2.5",
     "moment": "^2.29.1",

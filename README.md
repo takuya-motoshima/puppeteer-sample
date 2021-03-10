@@ -6,7 +6,7 @@ The following is the result of capturing "test-page/index.html" in this package 
 
 ![result.png](https://raw.githubusercontent.com/takuya-motoshima/puppeteer-sample/main/screencap/result.png)
 
-# Getting Started
+## Getting Started
 
 Install chrome.  
 Add the Google Chrome browser repository to "/etc/yum.repos.d/google.chrome.repo".  
@@ -53,3 +53,7 @@ This is a sample of clicking a button on the test page.
 ```sh
 node --experimental-modules run-click.js https://<Your hostYour host name>/test-page/click.html;
 ```
+
+## How to notify screenshots in slack
+
+Please see [./how-to-slack-api.md](./how-to-slack-api.md).
