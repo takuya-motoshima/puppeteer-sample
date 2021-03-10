@@ -18,7 +18,7 @@ if (!url) throw new Error('URL is required.');
 
   try {
     // Get Slack API tokens from ".env".
-    dotenv.config({ path: path.dirname(process.argv[1]) });
+    dotenv.config({ path: `${path.dirname(process.argv[1])}/.env` });
 
     // Launch the browser.
     browser = await launchBrowser();
