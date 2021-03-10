@@ -1,5 +1,5 @@
+import SlackClient from './shared/SlackClient.js';
 import dotenv from 'dotenv';
-import { WebClient } from '@slack/web-api';
 
 // Get the channel name from the command argument.
 const channel = process.argv.length > 2 ? process.argv[2] : undefined;
@@ -10,11 +10,10 @@ if (!channel) throw new Error('Channel is required.');
 (async () => {
   // Get Slack API tokens from ".env".
   dotenv.config();
-  console.log(process.env.SLACK_API_token);
 
-  // Send a message to Slack.
-  const client = new WebClient(process.env.SLACK_API_token);
-  const response = await client.chat.postMessage({channel, text: 'Hello, World!'});
+  // Upload images to Slack.
+  const client = new SlackClient(process.env.SLACK_API_TOKEN);
+  const response = await client.uploadImage(channel, './sample.jpg');
 
   // Check the response.
   console.log(response);

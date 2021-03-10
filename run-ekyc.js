@@ -1,7 +1,11 @@
 import launchBrowser from './shared/launchBrowser.js';
 import openPage from './shared/openPage.js';
-import screenshot from './shared/screenshot.js';
-import joinImages from 'join-images';
+import Screenshot from './shared/Screenshot.js';
+import joinImages from './shared/joinImages.js';
+import SlackClient from './shared/SlackClient.js';
+import sleep from 'sleep-promise';
+import path from 'path';
+import dotenv from 'dotenv';
 
 // URL of the operation target page.
 const url = process.argv.length > 2 ? process.argv[2] : undefined;
@@ -13,14 +17,18 @@ if (!url) throw new Error('URL is required.');
   let browser;
 
   try {
+    // Get Slack API tokens from ".env".
+    dotenv.config({ path: path.dirname(process.argv[1]) });
+
     // Launch the browser.
     browser = await launchBrowser();
 
     // Open page.
     const page = await openPage({browser, url});
+    const screenshot = new Screenshot({ page, dir: path.dirname(process.argv[1])});
 
     // screenshot.
-    await screenshot(page);
+    await screenshot.write();
 
     // Open Guidance.
     await page.evaluate(async () => {
@@ -30,7 +38,7 @@ if (!url) throw new Error('URL is required.');
       if (!btn) return console.log(`The button "${btnselector}" cannot be found`)
       btn.click();
     });
-    await screenshot(page);
+    await screenshot.write();
 
     // Open Guidance 2 and 3 and the pre-shooting page.
     for (let i=1; i<=3; i++) {
@@ -50,7 +58,7 @@ if (!url) throw new Error('URL is required.');
         if (!btn) return console.log(`The button "${btnselector}" cannot be found`)
         btn.click();
       }, i);
-      await screenshot(page);
+      await screenshot.write();
     }
 
     // Open the shooting page.
@@ -63,7 +71,7 @@ if (!url) throw new Error('URL is required.');
       if (!btn) return console.log(`The button "[on-continue]" cannot be found`)
       btn.click();
     });
-    await screenshot(page);
+    await screenshot.write();
 
     // Take a picture and complete the identity verification.
     await page.evaluate(() => {
@@ -75,7 +83,7 @@ if (!url) throw new Error('URL is required.');
       if (!btn) return console.log(`The button "[on-take]" cannot be found`)
       btn.click();
     });
-    await screenshot(page);
+    await screenshot.write();
 
     // Confirm the photo you took.
     await page.evaluate(() => {
@@ -87,7 +95,18 @@ if (!url) throw new Error('URL is required.');
       if (!btn) return console.log(`The button "[on-accept]" cannot be found`)
       btn.click();
     });
-    await screenshot(page);
+    await screenshot.write();
+
+    // Join all screenshots so far.
+    const imgpath = `${path.dirname(process.argv[1])}/screenshot/${screenshot.filename}.png`;
+    await joinImages(`${path.dirname(process.argv[1])}/screenshot/${screenshot.filename}*.png`, imgpath);
+
+    // Wait for the image to be written.
+    await sleep(2000);
+
+    // Send images to slack.
+    const client = new SlackClient(process.env.SLACK_API_TOKEN);
+    await client.uploadImage('monitor-protech-app-activity', imgpath);
   } finally {
     await browser.close();
   }

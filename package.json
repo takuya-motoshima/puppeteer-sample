@@ -30,7 +30,8 @@
     "globby": "^11.0.2",
     "join-images": "^0.2.5",
     "moment": "^2.29.1",
-    "puppeteer": "^8.0.0"
+    "puppeteer": "^8.0.0",
+    "sleep-promise": "^9.1.0"
   },
   "devDependencies": {
     "tslib": "^2.1.0"

@@ -1,6 +1,7 @@
 import launchBrowser from './shared/launchBrowser.js';
 import openPage from './shared/openPage.js';
-import screenshot from './shared/screenshot.js';
+import Screenshot from './shared/Screenshot.js';
+import path from 'path';
 
 // URL of the operation target page.
 const url = process.argv.length > 2 ? process.argv[2] : undefined;
@@ -10,16 +11,16 @@ if (!url) throw new Error('URL is required.');
 
 (async () => {
   let browser;
-
   try {
     // Launch the browser.
     browser = await launchBrowser();
 
     // Open page.
     const page = await openPage({browser, url});
+    const screenshot = new Screenshot({ page, dir: path.dirname(process.argv[1])});
 
     // screenshot.
-    await screenshot(page);
+    await screenshot.write();
 
     // Click the button.
     await page.evaluate(async () => {
@@ -29,7 +30,7 @@ if (!url) throw new Error('URL is required.');
     });
 
     // screenshot.
-    await screenshot(page);
+    await screenshot.write();
   } finally {
     await browser.close();
   }

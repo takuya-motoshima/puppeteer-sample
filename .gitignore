@@ -3,3 +3,4 @@ screenshot/*
 !screenshot
 .env
 !.env.sample
+cron.log

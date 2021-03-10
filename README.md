@@ -64,7 +64,7 @@ Then set the Slack API Bot token in ".env".
 .env: 
 
 ```text
-SLACK_API_token=****-************-*************-************************
+SLACK_API_TOKEN=****-************-*************-************************
 ```
 
 Now you are ready.  
