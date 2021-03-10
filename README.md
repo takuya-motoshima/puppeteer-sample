@@ -56,4 +56,20 @@ node --experimental-modules run-click.js https://<Your hostYour host name>/test-
 
 ## How to notify screenshots in slack
 
-Please see [./how-to-slack-api.md](./how-to-slack-api.md).
+See [./how-to-slack-api.md](./how-to-slack-api.md) for the installation method.
+
+After installation, copy ".env.sample" to ".env".  
+Then set the Slack API Bot token in ".env".  
+
+.env: 
+
+```text
+SLACK_API_token=****-************-*************-************************
+```
+
+Now you are ready.  
+You can send a message with the Slack API with the following command.  
+
+```sh
+node --experimental-modules test-slack-api.js <Channel name>;
+```

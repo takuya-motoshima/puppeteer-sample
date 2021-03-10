@@ -1,3 +1,5 @@
 node_modules/
 screenshot/*
 !screenshot
+.env
+!.env.sample
