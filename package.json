@@ -25,8 +25,12 @@
   },
   "homepage": "https://github.com/takuya-motoshima/puppeteer-sample#readme",
   "dependencies": {
-    "glob": "^7.1.6",
+    "globby": "^11.0.2",
+    "join-images": "^0.2.5",
     "moment": "^2.29.1",
     "puppeteer": "^8.0.0"
+  },
+  "devDependencies": {
+    "tslib": "^2.1.0"
   }
 }

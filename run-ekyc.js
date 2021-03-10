@@ -1,6 +1,7 @@
 import launchBrowser from './shared/launchBrowser.js';
 import openPage from './shared/openPage.js';
 import screenshot from './shared/screenshot.js';
+import joinImages from 'join-images';
 
 // URL of the operation target page.
 const url = process.argv.length > 2 ? process.argv[2] : undefined;
@@ -72,6 +73,18 @@ if (!url) throw new Error('URL is required.');
       const main = root.querySelector('.container main:nth-of-type(2)');
       const btn = main.querySelector(`[on-take]`);
       if (!btn) return console.log(`The button "[on-take]" cannot be found`)
+      btn.click();
+    });
+    await screenshot(page);
+
+    // Confirm the photo you took.
+    await page.evaluate(() => {
+      console.log('Confirm the photo you took');
+      const root = document.querySelector('body>div:last-child').shadowRoot;
+      if (!root) return console.log('Shadow root not found');
+      const main = root.querySelector('.container main:nth-of-type(2)');
+      const btn = main.querySelector(`[on-accept]`);
+      if (!btn) return console.log(`The button "[on-accept]" cannot be found`)
       btn.click();
     });
     await screenshot(page);
