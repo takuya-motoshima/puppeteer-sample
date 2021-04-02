@@ -73,3 +73,12 @@ You can send a message with the Slack API with the following command.
 ```sh
 node --experimental-modules test-slack-api.js <Channel name>;
 ```
+
+## Other
+
+How to stop all Chrome instances.  
+
+```sh
+sudo killall chrome;
+```
+
